@@ -13,7 +13,7 @@ TODO: Insert gif or link to demo
 
 ## Features
 TODO: 
-- Feature 1
+- Search the city for the corresponding weather information
 - Feature 2
 - Feature 3
 
