@@ -12,8 +12,11 @@
     <!--
     favicon
     -->
-    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
-    <!--
+    <link rel="shortcut icon" href="./favicon.svg" type="image/x-icon">
+    <!-- 
+    font awesome 
+    -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <!--
     font link
     -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,6 +32,7 @@
     <script src="./assets/js/app.js" type="module"></script>
     <script src="./assets/js/route.js" type="module"></script>
 </head>
+
 <body>
 
     <!-- 
@@ -36,25 +40,75 @@
     -->
     <header class="header">
         <div class="container">
-            <a href="#" class="logo">
+            <a href="#" class="logo"> <!-- Insert Logo --> 
                 <img src="./assets/images/logo.png" width="364" height = "58" alt="">
             </a>
 
-            <div class="search-view" data-search-view>
+            <div class="search-view" data-search-view> <!-- Search menu test with "search-view (active)"-->
                 <div class="search-wrapper">
-                    <input type="search" name="search" placeholder="Search city ..."
-                    autocomplete="off" class="search-field" data-search-field>
-
-                    <span class="m-icone">search</span>
+                    <!-- Search bar -->
+                    <input type="search" name="search" placeholder="Search city..."
+                    autocomplete="off" class="search-field" 
+                        data-search-field>
+                    
+                    <!-- Search Icon -->
+                    <span class="fa-solid fa-magnifying-glass-location"></span>     
+                    
+                    <!-- Back Arrow -->
+                    <button class="icon-btn leading-icon has-state" 
+                    aria-label="close search" data-search-toggler >
+                        <span class="fa-solid fa-arrow-left"></span>
+                    </button>
                 </div>
-                TODO:
-
-
-
-
+                <div class="search-result" data-search-result> <!-- Search results-->
+                    <ul class="view-list" data-search-list>
+    
+                        <li class="view-item">
+                            <!-- Location results -->
+                            <span class="fa-solid fa-location-dot"></span>
+                            <div>
+                                <p class="item-title">London</p>
+                                <p class="label-2 item-subtitle">State of London, GB</p>
+                            </div>
+                            <a href="#" class="item-link has-state" data-search-toggler></a>
+                        </li>
+                        
+    
+                    </ul>
+                </div>
             </div>
+            <div class="header-actions">
+                <button class="icon-btn has-state" aria-label="open search" data-search-toggler="">
+                    <span class="fa-solid fa-magnifying-glass-location fa-magnifying-glass-location"></span>    
+                </button>
+
+                <a href="#/current-location" class="btn-primary has-state" data-current-location-btn>
+                    <!-- Crosshair Icon -->
+                    <span class="fa-solid fa-location-crosshairs"></span>
+
+                    <span class="span">Current Location</span>
+                </a>
+            </div>
+
         </div>
     </header>
+
+
+    <main>
+        <article class="container">
+            <div class="content-left">
+                <!-- Current Weather -->
+                 <section class="section current-weather" aria-label="current weather" data-current-weather>
+                    <div class="card card-lg current-weather-card">
+                        <h2 class="title-2 card-title"> Now </h2>
+                        <div class="wrapper">
+                            <p class="heading">25&deg; <sup>c</sup></p>
+                        </div>
+                    </div>
+                 </section>
+            </div>
+        </article>
+    </main>
     
 </body>
 </html>
