@@ -4,7 +4,8 @@
 \*-----------------------------------*/
 :root {
   /* Color */
-  --primary: #B5A1E5; 
+--primary: #B5A1E5; 
+--primary-shadow: #8e7fb2; 
 --on-primary: #100E17; 
 --background: #131214;
 --on-background: #EAE6F2;
@@ -137,37 +138,6 @@ body {
 }
 
 
-
-/*-----------------------------------*\
-  MATERIAL ICON
-\*-----------------------------------*/
-
-@font-face {
-  font-family: 'Material Symbols Rounded';
-  font-style: normal;
-  font-weight: 400;
-  src: url(../font/material-symbol-rounded.woff2) format('wof2');
-}
-
-.m-icon {
-  font-family: 'Material Symbols Rounded';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 2.4rem;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  font-feature-settings: 'liga';
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: 'antialised';
-  height: lem;
-  width: lem;
-  overflow: hidden;
-}
-
 /*-----------------------------------*\
   #REUSED STYLE
 \*-----------------------------------*/
@@ -188,7 +158,11 @@ body {
   border-radius: var(--radius-circle);
 }
 
-.has-state { position:relative; }
+
+.has-state { 
+  position:relative; 
+  
+}
 
 /* hover highlight  */
 .has-state:hover { box-shadow: var(--shadow-1); }
@@ -203,6 +177,10 @@ body {
   clip-path: circle(100% at 50% 50%);
   transition:var(--transition-short);
 
+}
+
+.btn-primary.has-state:hover::before {
+  background-color: var(--background);
 }
 
 .has-state:hover::before { background-color: var(--white-alpha-4); }
@@ -220,14 +198,11 @@ body {
 .btn-primary {
   background-color: var(--primary);
   color:var(--on-primary);
+  width:48px;
   height: 48px;
-  line-height: 48px;
-  max-width: max-content;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding-inline: 16px;
-  border-radius: var(--radius-pill);
+  display:grid;
+  place-items: center;
+  border-radius: var(--radius-circle);
 }
 
 .btn-primary .span { font-weight: var(--weight-semiBold); }
@@ -240,8 +215,55 @@ body {
 
 .btn-primary[disabled]::before { display: none; }
 
+/* lg and sm Card for Current Weather */
+.card {
+  background-color: var(--surface);
+  color: var(--on-surface);
+}
+.card-lg {
+  border-radius: var(--radius-28);
+  padding:20px;
+}
+.card-sm{
+  padding:16px;
+  border-radius: var(--radius-16);
+}
+
+/* make font larger for "Now" and temp */
+.heading {
+  color: var(--white);
+  font-size: var(--heading);
+  line-height: 1.1;
+}
+
+.title-1 { font-size: var(--title-1); }
+
+.title-2 { 
+  font-size: var(--title-2);
+  margin-block-end: 12px;
+}
+
+.title-3 {
+  font-size:var(--title-3);
+  font-weight: var(--weight-semiBold);
+}
+
+.body-1 { font-size: var(--body-1); }
+
+.body-2 {
+  font-size: var(--body-2);
+  font-weight: var(--weight-semiBold);
+}
+
+.body-3 { font-size: var(--body-3); }
+
+.label-1 { font-size: var(--label-1); }
+
+.label-2 { font-size: var(--label-2); }
+
+
 /*-----------------------------------*\
-  #HEADER
+  HEADER
 \*-----------------------------------*/
 
 .header .btn-primary .span { display: none; }
@@ -255,6 +277,8 @@ body {
   display: flex;
   align-items: center;
 }
+
+
 
 .header .container { justify-content: space-between; }
 /* gap between the header icons */
@@ -366,11 +390,82 @@ body {
   box-shadow: none;
 }
 
+/*---------------------------------*\
+  MAIN
+\*-----------------------------------*/
 
+main {
+  height: calc(100vh - 80px);
+  height: calc(100svh - 80px); /* mobile browser*/
+}
+
+article.container{
+  position:relative;
+  display: grid;
+  grid-template-columns: (1,1fr);
+  gap: 20px;
+  height: 100%;
+  overflow-y: auto; /* firefox */
+  overflow-y: overlay;
+}
+
+article.container::-webkit-scrollbar-thumb { background-color: transparent; }
+
+article.container:is(:hover, :foxcus-within)::-webkit-scrollbar-thumb {
+  background-color: var(--white-alpha-8);
+}
+
+article.container::-webkit-scrollbar-button { height: 10px; }
+
+article.container::before {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background-image: var(--gradient-1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section:not(:last-child) { margin-inline-end: 16px;}
 
 /*---------------------------------*\
-  #CURRENT WEATHER
+  CURRENT WEATHER
 \*-----------------------------------*/
+
+.current-weather-card .wrapper {
+  margin-block: 12px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.current-weather-card .weather-icon {
+  margin-inline: auto;
+}
+
+.current-weather-card > .body-3 { text-transform: capitalize; }
+
+/* Seperate the weather condition and the data/location */
+.current-weather-card .meta-list {
+  margin-block-start: 16px;
+  padding-block-start: 16px;
+  border-block-start: 2px solid var(--outline);
+}
+
+/* align icon and information */
+.current-weather-card .meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* Space out info but not for last child*/
+.current-weather-card .meta-item:not(:last-child) {
+  margin-block-end: 12px;
+}
+
+.current-weather-card .meta-text { color: var(--on-surface-variant); }
 
 
 
@@ -380,9 +475,28 @@ body {
   #HIGHLIGHTS
 \*-----------------------------------*/
 
+.forecast-card .title-2 { margin-inline-end: 0; }
 
+/* Stacks 5 day forecasts on top */
+.forecast-card :is(.card-item, .icon-wrapper){
+  display:flex;
+  align-items: center;
+}
 
+/* Margin card items to space it out except the last item */
+.forecast-card .card-item:not(:last-child) { margin-block-end: 12px; }
+.forecast-card .icon-wrapper { gap: 8px; }
 
+.forecast-card .label-1 {
+  color: var(--on-surface-variant);
+  font-weight: var(--weight-semiBold);
+}
+
+/* Space out the information on each day of the forecast */
+.forecast-card .card-item > .label-1 {
+  width: 100%;
+  text-align: right;
+}
 
 /*-----------------------------------*\
   #HOURLY FORECAST
