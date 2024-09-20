@@ -67,8 +67,8 @@
                             <!-- Location results -->
                             <span class="fa-solid fa-location-dot"></span>
                             <div>
-                                <p class="item-title">London</p>
-                                <p class="label-2 item-subtitle">State of London, GB</p>
+                                <p class="item-title">Torrance</p>
+                                <p class="label-2 item-subtitle">California, US</p>
                             </div>
                             <a href="#" class="item-link has-state" data-search-toggler></a>
                         </li>
@@ -77,6 +77,7 @@
                     </ul>
                 </div>
             </div>
+            <!-- header when not in search view -->
             <div class="header-actions">
                 <button class="icon-btn has-state" aria-label="open search" data-search-toggler="">
                     <span class="fa-solid fa-magnifying-glass-location fa-magnifying-glass-location"></span>    
@@ -98,15 +99,155 @@
         <article class="container">
             <div class="content-left">
                 <!-- Current Weather -->
-                 <section class="section current-weather" aria-label="current weather" data-current-weather>
+                <section class="section current-weather" aria-label="current weather" data-current-weather>
                     <div class="card card-lg current-weather-card">
                         <h2 class="title-2 card-title"> Now </h2>
+                        <!-- wrapper for degrees -->
                         <div class="wrapper">
                             <p class="heading">25&deg; <sup>c</sup></p>
+                            <img src="./assets/images/weather_icons/01d.png" width="64" height="64" 
+                            alt="Overcast Clouds" class="weather-icon">
+                        </div>
+
+                        <p class="body-3">Clear Skies</p>
+
+                        <ul class="meta-list">
+                            <!-- Date -->
+                            <li class="meta-item">
+                                <span class="fa-regular fa-calendar"></span>
+                                <p class="title-3 meta-text">Thursday 19, Sept</p>
+                            </li>
+                            <!-- Location -->
+                            <li class="meta-item">
+                                <span class="fa-solid fa-location-dot"></span>
+                                <p class="title-3 meta-text">Torrance, CA</p>
+                            </li>
+                        </ul>
+
+                    </div>
+                </section>
+
+                <!-- Predicted Forecast -->
+                <section class="section forecast" aria-labelledby="forecast-label" 
+                data-5-day-forecast>
+                    <h2 class="title-2" id="forecast-label">5 Day Forecast</h2>
+                    <div class="card card-lg forecast-card">
+                        <ul>
+                            <li class="card-item">
+                                <div class="icon-wrapper">
+                                    <img src="./assets/images/weather_icons/01d.png"  
+                                    width="36" height="36" alt="Clear Skies" class="weather-icon">
+                                    <span class="span">
+                                        <p class="title-2">25</p>
+                                    </span>
+                                </div>
+
+                                <p class="label-1">20 Sept</p>
+                                <p class="label-1">Friday</p>
+                            </li>
+                            <li class="card-item">
+                                <div class="icon-wrapper">
+                                    <img src="./assets/images/weather_icons/01d.png"  
+                                    width="36" height="36" alt="Clear Skies" class="weather-icon">
+                                    <span class="span">
+                                        <p class="title-2">25</p>
+                                    </span>
+                                </div>
+
+                                <p class="label-1">20 Sept</p>
+                                <p class="label-1">Friday</p>
+                            </li>
+                            <li class="card-item">
+                                <div class="icon-wrapper">
+                                    <img src="./assets/images/weather_icons/01d.png"  
+                                    width="36" height="36" alt="Clear Skies" class="weather-icon">
+                                    <span class="span">
+                                        <p class="title-2">25</p>
+                                    </span>
+                                </div>
+
+                                <p class="label-1">20 Sept</p>
+                                <p class="label-1">Friday</p>
+                            </li>
+                            <li class="card-item">
+                                <div class="icon-wrapper">
+                                    <img src="./assets/images/weather_icons/01d.png"  
+                                    width="36" height="36" alt="Clear Skies" class="weather-icon">
+                                    <span class="span">
+                                        <p class="title-2">25</p>
+                                    </span>
+                                </div>
+
+                                <p class="label-1">20 Sept</p>
+                                <p class="label-1">Friday</p>
+                            </li>
+                            <li class="card-item">
+                                <div class="icon-wrapper">
+                                    <img src="./assets/images/weather_icons/01d.png"  
+                                    width="36" height="36" alt="Clear Skies" class="weather-icon">
+                                    <span class="span">
+                                        <p class="title-2">25</p>
+                                    </span>
+                                </div>
+
+                                <p class="label-1">20 Sept</p>
+                                <p class="label-1">Friday</p>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+            </div>
+
+            <div class="content-right">
+
+                <section class="section highlights" aria-labelledby="highlights-label" 
+                data-highlights>
+                    <div class="card card-lg">
+                        <h2 class="title-2" id="highlights-label">Today's Highlights</h2>
+                        <div class="highligh-list">
+                            <div class="card card-sm highlight-card-one">
+                                <h3 class="title-3">Air Quality Index</h3>
+                                <div class="wrapper">
+                                    <span class="fa-solid fa-wind"></span>
+
+                                    <ul class="card-list">
+
+                                        <li class="card-item">
+                                            <p class="title-1">25.5</p>
+                                            <p class="label-1">PM<sub>2.5</sub></p>
+                                        </li>
+
+                                        <li class="card-item">
+                                            <p class="title-1">25.5</p>
+                                            <p class="label-1">PM<sub>2.5</sub></p>
+                                        </li>
+
+                                        <li class="card-item">
+                                            <p class="title-1">25.5</p>
+                                            <p class="label-1">PM<sub>2.5</sub></p>
+                                        </li>
+
+                                        <li class="card-item">
+                                            <p class="title-1">25.5</p>
+                                            <p class="label-1">PM<sub>2.5</sub></p>
+                                        </li>
+
+                                        
+
+
+                                    </ul>
+
+
+
+                                </div>
+                            </div>
                         </div>
                     </div>
-                 </section>
+                </section>
             </div>
+
+
         </article>
     </main>
     
