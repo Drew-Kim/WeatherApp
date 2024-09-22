@@ -97,6 +97,7 @@
 
     <main>
         <article class="container">
+            <!-- Current section -->
             <div class="content-left">
                 <!-- Current Weather -->
                 <section class="section current-weather" aria-label="current weather" data-current-weather>
@@ -104,7 +105,7 @@
                         <h2 class="title-2 card-title"> Now </h2>
                         <!-- wrapper for degrees -->
                         <div class="wrapper">
-                            <p class="heading">25&deg; <sup>c</sup></p>
+                            <p class="heading">25&deg;C</p>
                             <img src="./assets/images/weather_icons/01d.png" width="64" height="64" 
                             alt="Overcast Clouds" class="weather-icon">
                         </div>
@@ -198,19 +199,19 @@
                 </section>
 
             </div>
-
+            <!--  Highlight section -->
             <div class="content-right">
-
+                
                 <section class="section highlights" aria-labelledby="highlights-label" 
                 data-highlights>
                     <div class="card card-lg">
                         <h2 class="title-2" id="highlights-label">Today's Highlights</h2>
-                        <div class="highligh-list">
-                            <div class="card card-sm highlight-card-one">
+                        <div class="highlight-list">
+                            <!-- Air Quality -->
+                            <div class="card card-sm highlight-card one">
                                 <h3 class="title-3">Air Quality Index</h3>
                                 <div class="wrapper">
                                     <span class="fa-solid fa-wind"></span>
-
                                     <ul class="card-list">
 
                                         <li class="card-item">
@@ -241,7 +242,76 @@
 
 
                                 </div>
+
+                                <span class="badge aqi-1 label-1" title="aqi message">
+                                    Good
+                                </span>
+                                
                             </div>
+                            <!-- Sunrise & Sunset -->
+                            <div class="card card-sm highlight-card two">
+                                <h3 class="title-3">Sunrise &amp Sunset</h3>
+                                <div class="card-list">
+                                    <!-- Sunrise -->
+                                    <div class="card-item">
+                                        <span class="fa-solid fa-sun"></span>
+                                        <div>
+                                            <p class="label-1">Sunrise</p>
+
+                                            <p class="title-1">6:30 AM</p>
+
+                                        </div>
+                                    </div>
+                                    <!-- Sunset -->
+                                    <div class="card-item">
+                                        <span class="fa-solid fa-moon"></span>
+                                        <div>
+                                            <p class="label-1">Sunset</p>
+
+                                            <p class="title-1">7:30 PM</p>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- Humidity -->
+                            <div class="card card-sm highlight-card">
+                                <h3 class="title-3">Humidity</h3>
+
+                                <div class="wrapper">
+                                    <span class="fa-solid fa-droplet"></span>
+                                    <p class="title-1">35%</p>
+                                </div>
+                            </div>
+                            <!-- Air Pressure -->
+                            <div class="card card-sm highlight-card">
+                                <h3 class="title-3">Air Pressure</h3>
+
+                                <div class="wrapper">
+                                    <span class="fa-solid fa-smog"></span>
+                                    <p class="title-1">1052<sub>hPa</sub></p>
+                                </div>
+                            </div>
+                            <!-- Visibility -->
+                            <div class="card card-sm highlight-card">
+                                <h3 class="title-3">Visibility</h3>
+
+                                <div class="wrapper">
+                                    <span class="fa-solid fa-eye"></span>
+                                    <p class="title-1">10<sub>km</sub></p>
+                                </div>
+                            </div>
+                            <!-- Feels Like -->
+                            <div class="card card-sm highlight-card">
+                                <h3 class="title-3">Visibility</h3>
+
+                                <div class="wrapper">
+                                    <span class="fa-solid fa-temperature-half"></span>
+                                    <p class="title-1">25&deg;C</p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </section>
