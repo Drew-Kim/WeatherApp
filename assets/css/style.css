@@ -464,7 +464,7 @@ article.container::before {
 .current-weather-card .meta-item:not(:last-child) {
   margin-block-end: 12px;
 }
-
+/* Change font color of date and location for current weather card */
 .current-weather-card .meta-text { color: var(--on-surface-variant); }
 
 
@@ -486,7 +486,7 @@ article.container::before {
 /* Margin card items to space it out except the last item */
 .forecast-card .card-item:not(:last-child) { margin-block-end: 12px; }
 .forecast-card .icon-wrapper { gap: 8px; }
-
+/* Change font color / weight for  dates in forecast */
 .forecast-card .label-1 {
   color: var(--on-surface-variant);
   font-weight: var(--weight-semiBold);
@@ -501,6 +501,54 @@ article.container::before {
 /*-----------------------------------*\
   #HOURLY FORECAST
 \*-----------------------------------*/
+/* Make highlight icons bigger */
+.highlights .fa-solid { font-size:3rem; }
+
+.highlight-list {
+  display: grid;
+  gap: 20px;
+}
+
+/* Font Color for highlight categories */
+.highlight-list .title-3 {
+  color:var(--on-surface-variant);
+  margin-block-end: 20px;
+}
+
+/* Give each category a seperate card*/
+.highlights .card-sm {
+  background-color: var(--black-alpha-10);
+  position:relative;
+}
+/* Put the sunrise and sunset in one line */
+.highlight-card :is(.wrapper, .card-list, .card-item) {
+  display: flex;
+  align-items: center;
+}
+/* Put the measurements on the right */
+.highlight-card .wrapper {
+  justify-content: space-between;
+  gap: 16px;
+}
+/* Air Quality info in a 2x2 */
+.highlight-card .card-list {
+  flex-wrap: wrap;
+  flex-grow: 1;
+  row-gap: 8px;
+}
+/* Move the wind icon & condition in Air Quality Index*/
+.highlight-card :is(.fa-wind, .aqi-1) {
+  margin-left: 30px;
+  transform: translateY(-10px);
+}
+/* Space out sunrise and sunset info */
+.highlight-card .card-item {
+  width: 40%;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.highlight-card .label-1{ color:var(--on-surface-variant); }
 
 
 
