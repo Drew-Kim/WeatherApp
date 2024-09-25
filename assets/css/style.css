@@ -797,10 +797,11 @@ of the hourly info */
   MEDIA QUERIES
 \*-----------------------------------*/
 
-/* Responsive for larger height than 768px screens */
+/* Responsive for larger height than 768px screens 
+and when width is equal or greater than 770px */
 
 /* @media (min-width: 768px) {*/
-@media (min-height: 768px) {
+@media (min-height: 768px) and (min-width: 770px){
   /* REUSE STYLE */
   .container {
     padding: 24px;
