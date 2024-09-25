@@ -5,44 +5,18 @@ An app that displays the weather information
 
 ## Tech Stack
 
-**Client:** HTML, CSS, JavaScript, API
+HTML, CSS, JavaScript, API
 
 ## Demo
 
-TODO: Insert gif or link to demo
+TODO: 
 
 ## Features
-TODO: 
+
 - Search the city for the corresponding weather information
-- Feature 2
-- Feature 3
 
-## Screenshots
 
-TODO:
+## How to launch
 
-## Run Locally
+add an api.js file with an OpenWeather API key
 
-Clone the project
-
-```bash
-  git clone https://link-to-project
-```
-
-Go to the project directory
-
-```bash
-  cd my-project
-```
-
-Open with VSCode
-
-```bash
-  code .
-```
-
-Open with live server
-
-```bash
-  npm run start
-```
