@@ -1,4 +1,3 @@
-
 # Weather App
 
 An app that displays the weather information
