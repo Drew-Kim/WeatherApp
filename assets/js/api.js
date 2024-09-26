@@ -4,7 +4,7 @@
 
 'use strict';
 
-const api_key = "dc74cc52b35cc836dfd797ae5ba89027";
+const api_key = " ";
 
 /**
  * 
