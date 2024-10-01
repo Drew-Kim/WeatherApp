@@ -6,9 +6,11 @@ bin-release/
 
 # Other files and folders
 .settings/
+<<<<<<< HEAD
 
 # API file
 config.js
+
 
 # Executables
 *.swf
