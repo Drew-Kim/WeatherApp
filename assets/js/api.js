@@ -12,11 +12,12 @@ const api_key = config.MY_KEY;
  */
 
 export const fetchData = function (URL, callback) {
-  fetch("${URL}&appid=${api_key")
+  fetch(`${URL}&appid=${api_key}`)
     .then((res) => res.json())
     .then((data) => callback(data));
 };
 
+// Return the information found on openweather.org to display
 export const url = {
   currentWeather(lat, lon) {
     return `https://api.openweathermap.org/data/2.5/weather?${lat}&${lon}&units=imperial`;

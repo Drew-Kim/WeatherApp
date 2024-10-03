@@ -4,7 +4,52 @@
 
 "use strict";
 
-import { updateWeather, error404 } from "./app.js";
+import { updateWeather, error404 } from "./api.js";
+
 const defaultLocation = "#/weather?lat=33.839449&lon=-118.349201"; // Torrance
 
-const currentLocation = function () {};
+const currentLocation = function () {
+  window.navigator.geolocation.getCurrentPosition(
+    (red) => {
+      const { latitude, longitude } = res.coords;
+
+      updateWeather(`lat=${latitude}`, `lon=${longitude}`);
+    },
+    (err) => {
+      window.location.hash = defaultLocation;
+    }
+  );
+};
+
+/**
+ *
+ * @param {string} query Searched query
+ */
+
+const searchedLocation = (query) => updateWeather(...query.split("&"));
+// updateWeather({default latitude and longitude})
+
+const routes = new Map([
+  ["/current-location", currentLocation],
+  ["/weather", searchedLocation],
+]);
+
+const checkHash = function () {
+  const requestURL = window.location.hash.slice(1);
+
+  const [route, query] = requestURL.includes
+    ? requestURL.split("?")
+    : [requestURL];
+
+  routes.get(route) ? routes.get(route)(query) : error404();
+};
+
+window.addEventListener("hashchange", checkHash);
+
+window.addEventListener("load", function () {
+  if (!window.location.hash) {
+    window.location.hash = "#/current-location";
+  } else {
+    checkHash();
+  }
+});

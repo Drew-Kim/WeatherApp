@@ -36,9 +36,25 @@ export const monthNames = [
 export const getDate = function (dateUnix, timezone) {
   const date = new Date((dateUnix + timezone) * 1000);
   const weekDayNames = weekDayNames[date.getUTCDay()];
-  const monthName = monthNames[DataTransfer.getUTCMonth()];
+  const monthName = monthNames[date.getUTCMonth()];
 
   return `${weekDayNames} ${date.getUTCDate}, ${monthName}`;
+};
+
+/**
+ *
+ * @param {number} timeUnix Date in secs
+ * @param {number} timezone Timezone shift from UTC in secs
+ * @returns {string} Returns time as a string (format): HH MM AM/PM
+ */
+
+export const getTime = function (timeUnix, timezone) {
+  const date = new Date((timeUnix + timezone) * 1000);
+  const hours = date.getUTCHours();
+  const minutes = date.getUTCMinutes();
+  const period = hours >= 12 ? "PM" : "AM";
+
+  return `${hours % 12 || 12}:${minutes} ${period}`;
 };
 
 /**
@@ -48,7 +64,7 @@ export const getDate = function (dateUnix, timezone) {
  * @returns {string} Returns time as a string (format): HH AM/PM
  */
 
-export const getTime = function (timeUnix, timezone) {
+export const getHours = function (timeUnix, timezone) {
   const date = new Date((timeUnix + timezone) * 1000);
   const hours = date.getUTCHours();
   const period = hours >= 12 ? "PM" : "AM";
