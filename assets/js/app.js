@@ -1,7 +1,9 @@
 "use strict";
 
+import { fetchData, url } from "./api.js";
+import * as module from "./module.js";
+
 document.addEventListener("DOMContentLoaded", () => {
-  
 
   /**
    * event listener on multiple elements
@@ -10,10 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
    * @param {Function} callback Call back function
    */
   const addEventOnElements = function (elements, eventType, callback) {
-    for (const element of elements) {
-      console.log(`Adding event listener to:`, element); // Debugging line
-      element.addEventListener(eventType, callback);
-    }
+    for (const element of elements) element.addEventListener(eventType, callback);
   };
 
   /**
@@ -21,15 +20,69 @@ document.addEventListener("DOMContentLoaded", () => {
    */
   const searchView = document.querySelector("[data-search-view]");
   const searchTogglers = document.querySelectorAll("[data-search-toggler]");
-
-  console.log(`Search View:`, searchView); // Debugging line
-  console.log(`Search Togglers:`, searchTogglers); // Debugging line
-
   const toggleSearch = () => {
-    console.log(`Toggling search view`); // Debugging line
     searchView.classList.toggle("active");
   };
 
   addEventOnElements(searchTogglers, "click", toggleSearch);
-});
 
+  const searchField = document.querySelector("[data-search-field]");
+  const searchResult = document.querySelector("[data-search-results]");
+
+  let searchTimeout = null;
+  let searchTimeoutDuraction = 500;
+
+  searchField.addEventListener("input", function () {
+    searchTimeout ?? clearTimeout(searchTimeout);
+
+    if (!searchField.value) {
+      searchResult.classList.remove("active");
+      searchResult.innerHTML = "";
+      searchField.classList.remove("searching");
+    } else {
+      searchField.classList.add("searching");
+    }
+
+    if (searchField.value) {
+      searchTimeout = setTimeout(() => {
+        fetchData(url.geo(search.Field.value), function (locations) {
+          searchField.classList.remove("searching");
+          searchResult.classList.add("active");
+          searchResult.innerHTML = `
+          <ul class="view-list" data-search-list>
+            <li class="view-item">
+              <span class="fa-solid fa-location-dot"></span>
+              <div>
+                <p class="item-title">Torrance</p>
+                <p class="label-2 item-subtitle">California, US</p>
+              </div>
+              <a href="#" class="item-link has-state" data-search-toggler></a>
+            </li>
+          </ul>`;
+
+          const /** NodeList | [] */ items = [];
+
+          for (const { name, lat, lon, state, country } of locations) {
+            const searchItem = document.createElement("li");
+            searchItem.classList.add("view-item");
+
+            searchItem.innerHTML = `
+              <span class="fa-solid fa-location-dot"></span>
+              <div>
+                <p class="item-title">${name}</p>
+                <p class="label-2 item-subtitle">${state || ""}, ${country}</p>
+              </div>
+              <a href="#/weather?lat=${lat}&long=${lon}" class="item-link 
+              has-state" aria=label="${name}" data-search-toggler></a>
+            `;
+
+            searchResult
+              .querySelector("[data-search-list]")
+              .appendChild(searchItem);
+            items.push(searchItem.querySelector("[data-search-toggler]"));
+          }
+        });
+      }, searchTimeoutDuraction);
+    }
+  });
+});

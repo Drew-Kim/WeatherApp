@@ -3,7 +3,7 @@
  */
 "use strict";
 
-const api_key = config.MY_KEY;
+import { api_key } from "./config.js";
 
 /**
  * Fetch data from server
