@@ -3,52 +3,54 @@
 import { fetchData, url } from "./api.js";
 import * as module from "./module.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+/**
+ * event listener on multiple elements
+ * @param {NodeList} elements Elements node array
+ * @param {string} eventType Event type ex "click", "mouserover"
+ * @param {Function} callback Call back function
+ */
+const addEventOnElements = function (elements, eventType, callback) {
+  for (const element of elements) element.addEventListener(eventType, callback);
+};
 
-  /**
-   * event listener on multiple elements
-   * @param {NodeList} elements Elements node array
-   * @param {string} eventType Event type ex "click", "mouserover"
-   * @param {Function} callback Call back function
-   */
-  const addEventOnElements = function (elements, eventType, callback) {
-    for (const element of elements) element.addEventListener(eventType, callback);
-  };
+/**
+ * Toggle search in mobile devices
+ */
+const searchView = document.querySelector("[data-search-view]");
+const searchTogglers = document.querySelectorAll("[data-search-toggler]");
+const toggleSearch = () => {
+  searchView.classList.toggle("active");
+};
 
-  /**
-   * Toggle search in mobile devices
-   */
-  const searchView = document.querySelector("[data-search-view]");
-  const searchTogglers = document.querySelectorAll("[data-search-toggler]");
-  const toggleSearch = () => {
-    searchView.classList.toggle("active");
-  };
+addEventOnElements(searchTogglers, "click", toggleSearch);
 
-  addEventOnElements(searchTogglers, "click", toggleSearch);
+/**
+ * Search Functionality
+ */
 
-  const searchField = document.querySelector("[data-search-field]");
-  const searchResult = document.querySelector("[data-search-results]");
+const searchField = document.querySelector("[data-search-field]");
+const searchResult = document.querySelector("[data-search-result]");
 
-  let searchTimeout = null;
-  let searchTimeoutDuraction = 500;
+let searchTimeout = null;
+const searchTimeoutDuration = 500;
 
-  searchField.addEventListener("input", function () {
-    searchTimeout ?? clearTimeout(searchTimeout);
+searchField.addEventListener("input", function () {
+  searchTimeout ?? clearTimeout(searchTimeout);
 
-    if (!searchField.value) {
-      searchResult.classList.remove("active");
-      searchResult.innerHTML = "";
-      searchField.classList.remove("searching");
-    } else {
-      searchField.classList.add("searching");
-    }
+  if (!searchField.value) {
+    searchResult.classList.remove("active");
+    searchResult.innerHTML = "";
+    searchField.classList.remove("searching");
+  } else {
+    searchField.classList.add("searching");
+  }
 
-    if (searchField.value) {
-      searchTimeout = setTimeout(() => {
-        fetchData(url.geo(search.Field.value), function (locations) {
-          searchField.classList.remove("searching");
-          searchResult.classList.add("active");
-          searchResult.innerHTML = `
+  if (searchField.value) {
+    searchTimeout = setTimeout(() => {
+      fetchData(url.geo(searchField.value), function (locations) {
+        searchField.classList.remove("searching");
+        searchResult.classList.add("active");
+        searchResult.innerHTML = `
           <ul class="view-list" data-search-list>
             <li class="view-item">
               <span class="fa-solid fa-location-dot"></span>
@@ -60,13 +62,13 @@ document.addEventListener("DOMContentLoaded", () => {
             </li>
           </ul>`;
 
-          const /** NodeList | [] */ items = [];
+        const /** NodeList | [] */ items = [];
 
-          for (const { name, lat, lon, state, country } of locations) {
-            const searchItem = document.createElement("li");
-            searchItem.classList.add("view-item");
+        for (const { name, lat, lon, state, country } of locations) {
+          const searchItem = document.createElement("li");
+          searchItem.classList.add("view-item");
 
-            searchItem.innerHTML = `
+          searchItem.innerHTML = `
               <span class="fa-solid fa-location-dot"></span>
               <div>
                 <p class="item-title">${name}</p>
@@ -76,13 +78,12 @@ document.addEventListener("DOMContentLoaded", () => {
               has-state" aria=label="${name}" data-search-toggler></a>
             `;
 
-            searchResult
-              .querySelector("[data-search-list]")
-              .appendChild(searchItem);
-            items.push(searchItem.querySelector("[data-search-toggler]"));
-          }
-        });
-      }, searchTimeoutDuraction);
-    }
-  });
+          searchResult
+            .querySelector("[data-search-list]")
+            .appendChild(searchItem);
+          items.push(searchItem.querySelector("[data-search-toggler]"));
+        }
+      });
+    }, searchTimeoutDuration);
+  }
 });
