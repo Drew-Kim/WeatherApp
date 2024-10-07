@@ -32,3 +32,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   addEventOnElements(searchTogglers, "click", toggleSearch);
 });
+
