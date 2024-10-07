@@ -8,7 +8,7 @@ const api_key = config.MY_KEY;
 /**
  * Fetch data from server
  * @param {string} URL API url
- * @param {function} callback callback
+ * @param {Function} callback callback
  */
 
 export const fetchData = function (URL, callback) {
