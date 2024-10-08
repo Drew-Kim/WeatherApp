@@ -51,16 +51,7 @@ searchField.addEventListener("input", function () {
         searchField.classList.remove("searching");
         searchResult.classList.add("active");
         searchResult.innerHTML = `
-          <ul class="view-list" data-search-list>
-            <li class="view-item">
-              <span class="fa-solid fa-location-dot"></span>
-              <div>
-                <p class="item-title">Torrance</p>
-                <p class="label-2 item-subtitle">California, US</p>
-              </div>
-              <a href="#" class="item-link has-state" data-search-toggler></a>
-            </li>
-          </ul>`;
+          <ul class="view-list" data-search-list></ul>`;
 
         const /** NodeList | [] */ items = [];
 
@@ -75,7 +66,7 @@ searchField.addEventListener("input", function () {
                 <p class="label-2 item-subtitle">${state || ""}, ${country}</p>
               </div>
               <a href="#/weather?lat=${lat}&long=${lon}" class="item-link 
-              has-state" aria=label="${name}" data-search-toggler></a>
+              has-state" aria=label="${name} weather" data-search-toggler></a>
             `;
 
           searchResult
