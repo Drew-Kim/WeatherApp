@@ -591,6 +591,7 @@ article.container::before {
   gap: 20px;
 }
 
+
 /* Font Color for highlight categories */
 .highlight-list .title-3 {
   color: var(--on-surface-variant);
@@ -663,7 +664,7 @@ and font color according to the condition */
   background-color: var(--bg-aqi-5);
   color: var(--on-bg-aqi-5);
 }
-/* Space out the sunerise and sunset */
+/* Space out the sunrise and sunset */
 .highlight-card.two .card-item {
   justify-content: flex-start;
   flex-wrap: wrap;
