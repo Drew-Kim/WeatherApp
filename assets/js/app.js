@@ -78,3 +78,5 @@ searchField.addEventListener("input", function () {
     }, searchTimeoutDuration);
   }
 });
+
+const container = document.querySelector("[data-container]");
