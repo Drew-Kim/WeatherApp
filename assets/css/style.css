@@ -682,9 +682,10 @@ and font color according to the condition */
   overflow-x: auto;
   margin-inline: -16px;
 }
-.slider-container::-webkit-scrollbar {
+/* Hide the scrollbar
+  .slider-container::-webkit-scrollbar {
   display: none;
-}
+} */
 
 .slider-list {
   display: flex;
