@@ -508,7 +508,7 @@ article.container::before {
   CURRENT FORECAST
 \*-----------------------------------*/
 
-.current-weather-card .weapper {
+.current-weather-card .wrapper {
   margin-block: 12px;
   display: flex;
   gap: 8px;
@@ -974,7 +974,7 @@ and when width is equal or greater than 770px */
     animation: none;
   }
   /* Resize the text for the degree of the current weather  */
-  .weapper .heading {
+  .wrapper .heading {
     font-size: 60px;
   }
 
