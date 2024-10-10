@@ -116,7 +116,7 @@
 
     <!-- Main Content -->
     <main>
-      <article class="container">
+      <article class="container" data-container>
         <!-- Current section -->
         <div class="content-left">
           <!-- Current Weather -->
@@ -124,37 +124,7 @@
             class="section current-weather"
             aria-label="current weather"
             data-current-weather
-          >
-            <div class="card card-lg current-weather-card">
-              <h2 class="title-2 card-title">Now</h2>
-              <!-- wrapper for degrees -->
-              <div class="weapper">
-                <p class="heading">75<sup>&deg;F</sup></p>
-                <img
-                  src="./assets/images/weather_icons/01d.png"
-                  width="64"
-                  height="64"
-                  alt="Overcast Clouds"
-                  class="weather-icon"
-                />
-              </div>
-
-              <p class="body-3">Clear Skies</p>
-
-              <ul class="meta-list">
-                <!-- Date -->
-                <li class="meta-item">
-                  <span class="fa-regular fa-calendar"></span>
-                  <p class="title-3 meta-text">Thursday 19, Sept</p>
-                </li>
-                <!-- Location -->
-                <li class="meta-item">
-                  <span class="fa-solid fa-location-dot"></span>
-                  <p class="title-3 meta-text">Torrance, CA</p>
-                </li>
-              </ul>
-            </div>
-          </section>
+          ></section>
 
           <!-- Predicted 5 Day Forecast -->
           <section
@@ -268,7 +238,7 @@
                 <!-- Air Quality -->
                 <div class="card card-sm highlight-card one">
                   <h3 class="title-3">Air Quality Index</h3>
-                  <div class="wrapper">
+                  <div class="wrapper"> 
                     <img
                       src="./assets/images/weather_icons/air-quality.png"
                       width="32"

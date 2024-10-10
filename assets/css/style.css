@@ -591,7 +591,6 @@ article.container::before {
   gap: 20px;
 }
 
-
 /* Font Color for highlight categories */
 .highlight-list .title-3 {
   color: var(--on-surface-variant);
@@ -759,11 +758,10 @@ of the hourly info */
   height: 100vh;
   height: 100svh;
   background-color: var(--background);
-  display: flex;
-  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  display: none;
   z-index: 8;
 }
 
@@ -803,7 +801,7 @@ of the hourly info */
 and when width is equal or greater than 770px */
 
 /* @media (min-width: 768px) {*/
-@media (min-height: 768px) and (min-width: 770px){
+@media (min-height: 768px) and (min-width: 770px) {
   /* REUSE STYLE */
   .container {
     padding: 24px;
@@ -1071,7 +1069,6 @@ and when width is equal or greater than 770px */
     height: 50px;
   }
 
-
   .slider-list {
     gap: 16px;
   }
@@ -1080,11 +1077,10 @@ and when width is equal or greater than 770px */
 /* Responsive for larger than 1400px screens */
 @media (min-width: 1400px) {
   .highlight-list {
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
   /* Make font size smaller for Air Quality Index */
   .card-list .title-1 {
     font-size: 30px;
   }
-
 }
