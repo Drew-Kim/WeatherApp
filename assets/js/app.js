@@ -98,10 +98,10 @@ const errorContent = document.querySelector("[data-error-content]");
 
 // Update weather function
 export const updateWeather = function (lat, lon) {
-  // loading.style.display = "grid";
+  loading.style.display = "grid";
 
-  // container.style.overflowY = "hidden";
-  // container.classList.remove("fade-in");
+  container.style.overflowY = "hidden";
+  container.classList.remove("fade-in");
   errorContent.style.display = "none";
 
   const currentWeatherSection = document.querySelector(
@@ -259,7 +259,7 @@ export const updateWeather = function (lat, lon) {
 
           <div class="wrapper">
             <span class="fa-solid fa-droplet"></span>
-            <p class="title-1">${humidity}</p>
+            <p class="title-1">${humidity}%</p>
           </div>
         </div>
         <!-- Air Pressure -->
@@ -311,19 +311,7 @@ export const updateWeather = function (lat, lon) {
           <ul class="slider-list" data-temp></ul>
 
           <!-- Hourly Wind Forecast -->
-          <ul class="slider-list" data-wind>
-            <li class="slider-item">
-              <div class="card card-sm slider-card">
-                <p class="body-3">3 PM</p>
-                <span
-                  class="fa-solid fa-wind weather-icon"
-                  loading="lazy"
-                  alt=""
-                ></span>
-                <p class="body-3">12 <sub>km/h</sub></p>
-              </div>
-            </li>
-          </ul>
+          <ul class="slider-list" data-wind></ul>
         </div>
       `;
 
@@ -356,7 +344,74 @@ export const updateWeather = function (lat, lon) {
             <p class="body-3">${parseInt(temp)}&deg;</p>
           </div>
         `;
+        hourlySection.querySelector("[data-temp]").appendChild(tempLi);
+
+        const windLi = document.createElement("li");
+        windLi.classList.add("slider-item");
+        windLi.innerHTML = `
+        <div class="card card-sm slider-card">
+          <p class="body-3">${module.getHours(dateTimeUnix, timezone)}</p>
+          <span
+            class="fa-solid fa-wind weather-icon"
+            loading="lazy"
+            alt="direction"
+          ></span>
+          <p class="body-3">${parseInt(module.mps_to_kmh(windSpeed))}<sub>km/h</sub></p>
+        </div>
+        `;
+        hourlySection.querySelector("[data-wind]").appendChild(windLi);
       }
+      /**
+       *  5 Day Forecast
+       */
+
+      forecastSection.innerHTML = `
+        <h2 class="title-2" id="forecast-label">5 Day Forecast</h2>
+        <div class="card card-lg forecast-card">
+          <ul data-forecast-list></ul>
+        </div>
+      `;
+
+      for (let i = 7, len = forecastList.length; i< len; i += 8) {
+
+        const {
+          main: { temp_max },
+          weather,
+          dt_txt
+        } = forecastList[i];
+        const [{icon, description}] = weather;
+        const date = new Date(dt_txt);
+
+        const li = document.createElement("li");
+        li.classList.add("card-item");
+
+        li.innerHTML= `
+        <div class="icon-wrapper">
+          <img
+            src="./assets/images/weather_icons/${icon}.png"
+            width="36"
+            height="36"
+            alt="${description}"
+            class="weather-icon"
+            title = "${description}"
+          />
+          <span class="span">
+            <p class="title-1">${parseInt(temp_max)}<sup>&deg;F</sup></p>
+          </span>
+        </div>
+
+        <p class="label-1">${date.getDate()} ${module.monthNames[date.getMonth()]}</p>
+        <p class="label-1">${module.weekDayNames[date.getUTCDay()]}</p>
+        `;
+
+        forecastSection.querySelector("[data-forecast-list]").appendChild(li);
+      }
+
+      loading.style.display = "none";
+      container.style.overflowY = "overlay";
+      container.classList.remove("fade-in");
+
+
     });
   });
 };
