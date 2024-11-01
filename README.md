@@ -6,10 +6,6 @@ An app that displays the weather information
 
 HTML, CSS, JavaScript, API
 
-## Demo
-
-TODO: 
-
 ## Features
 
 - Search the city for the corresponding weather information
