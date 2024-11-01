@@ -13,5 +13,5 @@ HTML, CSS, JavaScript, API
 
 ## How to launch
 
-add an api.js file with an OpenWeather API key
+Create a config.js file with an OpenWeather API key defined to export api_key
 
